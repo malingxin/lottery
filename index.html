@@ -25,7 +25,6 @@
         .result span {
             display: inline-block;
             font-size: 25px;
-            width: 150px;
             background: #fff;
             line-height: 30px;
             color: #000;
@@ -193,7 +192,8 @@
                 .map(function(m){
                   choosed[getKey(m)] = 1;
                   list[m.index].style.color = color;
-                  return m.name + '<br/>' + m.phone;
+                  <!-- return m.name + '<br/>' + m.phone + '<br/>' + m.department; -->
+				  return '工号：' + m.phone + '<br/>' + '姓名：' + m.name + '<br/>' + '部门：' + m.department;
                 });
             localStorage.setItem('choosed', JSON.stringify(choosed));
             return ret;
@@ -203,13 +203,14 @@
         canvas.width = document.body.offsetWidth;
         canvas.height = document.body.offsetHeight;
         document.getElementById('main').appendChild(canvas);
+		<!-- Vue 抽奖数量 -->
         new Vue({
             el: '#tools',
             data: {
                 selected: 30,
                 running: false,
                 btns: [
-                    30, 10, 5, 2, 1
+                    100,50,30, 10, 5, 2, 1, "主页"
                 ]
             },
             ready: function(){
